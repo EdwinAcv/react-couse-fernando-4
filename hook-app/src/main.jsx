@@ -10,10 +10,12 @@ import './index.css'
 // import { FokusScree } from './04-useRef/FokusScree'
 // import { Layout } from './05-useLayoutEfect/Layout'
 // import { Memorize } from './06-memos/Memorize'
-import { MemorizeHook } from './06-memos/MemorizeHook'
+// import { MemorizeHook } from './06-memos/MemorizeHook'
+// import { CallBackHook } from './06-memos/CallBackHook'
+import { Padre } from './07-tarea-memo/Padre'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-    <MemorizeHook />
+    <Padre />
   // </React.StrictMode>,
 )

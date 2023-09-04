@@ -32,6 +32,7 @@ export const Layout = () => {
 
             )
         }
+        
 
         <button  onClick={increment} className="btn btn-primary">
             Next Digimon
