@@ -1,16 +1,16 @@
+import { useCounter } from "../hooks/useCounter";
 import { useFetch } from "../hooks/useFetch"
 
 export const MultipleCustomHooks = () => {
 
 
-    const {data, isLoading, hasError} = useFetch('https://www.digi-api.com/api/v1/digimon/20');
-
+    const {counter, increment} = useCounter(1)
+    const {data, isLoading, hasError} = useFetch(`https://www.digi-api.com/api/v1/digimon/${counter}`);
     
-
     const { name, id , types} = !!data  && data ;
-    const {type} = !!types && types[0];
-    // console.log(types[0].type)
-    return (
+
+    const {type} = !!types && types[0] || { type: 'No tiene'};
+     return (
     <>
       <h1>Digimon Api</h1>
       <hr/>
@@ -33,8 +33,8 @@ export const MultipleCustomHooks = () => {
             )
         }
 
-        <button  className="btn btn-primary">
-            Next Quote
+        <button  onClick={increment} className="btn btn-primary">
+            Next Digimon
         </button>
     </>
   )
