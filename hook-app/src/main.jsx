@@ -7,10 +7,13 @@ import './index.css'
 // import { SimpleForm } from './02-useEffect/SimpleForm'
 // import { SimpleFormWithCustomHook } from './02-useEffect/SimpleFormWithCustomHook'
 // import { MultipleCustomHooks } from './03-examples/MultipleCustomHooks'
-import { FokusScree } from './04-useRef/FokusScree'
+// import { FokusScree } from './04-useRef/FokusScree'
+// import { Layout } from './05-useLayoutEfect/Layout'
+// import { Memorize } from './06-memos/Memorize'
+import { MemorizeHook } from './06-memos/MemorizeHook'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-    <FokusScree />
+    <MemorizeHook />
   // </React.StrictMode>,
 )
