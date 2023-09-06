@@ -40,11 +40,18 @@ export const TodoAdd = ( { onNewTodo } ) => {
 
         <button 
             type="submit"
-            className="btn btn-outline-primary mt-2"
+            className="btn btn-outline-primary mt-2 "
             
         >
             Agregar
         </button>
+
+        <input 
+            type="file" 
+            name="myDocs" 
+            accept=".docx,.pdf"
+            className="form-control mt-2"
+        />
     </form>
   )
 }
