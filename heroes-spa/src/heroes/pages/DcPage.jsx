@@ -2,6 +2,6 @@
 
 export const DcPage = () => {
   return (
-    <h1>DC Page</h1>
+    <h1>DCPage</h1>
   )
 }
