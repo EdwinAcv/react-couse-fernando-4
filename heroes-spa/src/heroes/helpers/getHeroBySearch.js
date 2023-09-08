@@ -8,7 +8,16 @@ export const getHeroeBySearch = ( Search = '' ) => {
     if ( Search.length === 0 ) return [];
 
     return heroes.filter(
-        hero => hero.superhero.toLocaleLowerCase().includes( Search )
+        hero => {
+            for (const key in hero) {     
+                
+                const isTrue = hero[key].toLocaleLowerCase().includes( Search )
+                if(isTrue){
+                    return isTrue;
+                }
+            }
+             
+        }
     )
 
     // return heroes.filter ( heroe => heroe.publisher === Search );
