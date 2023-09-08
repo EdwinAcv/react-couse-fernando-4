@@ -2,11 +2,14 @@
 
 import { heroes } from '../data/heroes';
 
-export const getHeroeBySearch = ( Search ) => {
-    // const validSearch = ['Marvel Comics','DC Comics'];
-    // if(!validSearch.includes( Search )){
-    //     throw new Error(`${ publisher } is not a valid Search`)
-    // }
+export const getHeroeBySearch = ( Search = '' ) => {
     
-    return heroes.filter ( heroe => heroe.publisher === Search );
+    Search = Search.toLocaleLowerCase().trim();
+    if ( Search.length === 0 ) return [];
+
+    return heroes.filter(
+        hero => hero.superhero.toLocaleLowerCase().includes( Search )
+    )
+
+    // return heroes.filter ( heroe => heroe.publisher === Search );
 }
