@@ -97,6 +97,7 @@ export const RegisterPage = () => {
               >
                 <Alert severity="error"> { errorMessage } </Alert>
               </Grid>
+              
               <Grid item xs = { 12 } >
                 <Button 
                   disabled={ isCheckingAuthentication }
