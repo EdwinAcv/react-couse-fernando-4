@@ -4,18 +4,22 @@ import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks/useForm";
 import { checkingAuthentication, startGoogleSingIn } from "../../store/auth/thunks";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useMemo } from "react";
 
 
 
 export const LoginPage = () => {
 
+  const { status } = useSelector( state => state.auth );
+
+  const dispatch = useDispatch();
   const { email, password, onInputChange } = useForm({
     email:'edwin@google.com',
     password: '12345'
   });
 
-  const dispatch = useDispatch();
+  const isAuthenticating = useMemo( () => status === 'checking', [status] )
 
   const onSumbit = ( event ) => {
     event.preventDefault();
@@ -60,12 +64,18 @@ export const LoginPage = () => {
 
             <Grid container spacing={ 2 } sx={ { mb: 2 , mt: 1} }>
               <Grid item xs = { 12 } sm={ 6 }>
-                <Button type="submit" variant="contained" fullWidth>
+                <Button 
+                  disabled= { isAuthenticating }
+                  type="submit" 
+                  variant="contained" 
+                  fullWidth
+                >
                   Login
                 </Button>
               </Grid>
               <Grid item xs = { 12 } sm={ 6 }>
                 <Button 
+                  disabled={ isAuthenticating }
                   variant="contained" 
                   fullWidth
                   onClick={ onGoogleSingIn } 
