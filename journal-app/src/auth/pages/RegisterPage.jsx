@@ -6,12 +6,20 @@ import { useForm } from "../../hooks/useForm";
 const formData = {
   email:'edwin@google.com',
   password: '12345',
-  displayName: 'Edwin Acevedo'
+  displayName: 'Edwin acevedo'
+}
+
+const formValidations = {
+  email: [ (value) => value.includes('@'), 'El correo de tener una @' ],
+  password: [ (value) => value.length >= 6, 'El password de incluir mas de 6 letras' ],
+  displayName: [ (value) => value.length >= 1, 'El nombre es obligatorio' ],
 }
 
 export const RegisterPage = () => {
 
-  const { displayName,email, password, onInputChange, formState } = useForm(formData);
+  const { displayName,email, password, onInputChange, formState, 
+    isFormValid, deiplayNameValid, emailValid, passwordValid 
+  } = useForm(formData, formValidations);
 
   const onSubmit = ( event ) => {
     event.preventDefault();
@@ -31,6 +39,8 @@ export const RegisterPage = () => {
                 name="displayName"
                 value={ displayName }
                 onChange={ onInputChange }
+                error={ !deiplayNameValide }
+                helperText={ deiplayNameValid }
               />
             </Grid>
 
