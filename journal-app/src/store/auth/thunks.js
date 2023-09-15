@@ -1,5 +1,5 @@
 import { CleaningServicesOutlined } from "@mui/icons-material";
-import { singInWithGoogle } from "../../firebase/providers";
+import { registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
 import { checkingCredentials, login, logout } from "./authSlice"
 
 
@@ -19,3 +19,12 @@ export const startGoogleSingIn = ( ) => {
         dispatch( login( result ) );
     }
 }  
+
+export const statCreatingUserWithEmailPassword = ({ email, password, displayName }) => {
+    return async( dispatch ) => {
+        dispatch( checkingCredentials() );
+        const resp = await registerUserWithEmailPassword({ email, password, displayName });
+        
+        console.log(resp);
+    }
+}
