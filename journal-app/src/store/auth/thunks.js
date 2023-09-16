@@ -1,5 +1,5 @@
 import { CleaningServicesOutlined } from "@mui/icons-material";
-import { loginWithemailPassword, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
+import { loginWithemailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
 import { checkingCredentials, login, logout } from "./authSlice"
 
 
@@ -38,5 +38,13 @@ export const startLoginWithEmailPassword = ({ email, password  }) => {
         if ( !ok ) return dispatch( logout( {errorMessage} ) );
         dispatch ( login( { uid, displayName, email, photoURL } ) );
     
+    }
+}
+
+export const startLogout = () => {
+    return async( dispatch ) => {
+        await logoutFirebase();
+
+        dispatch( logout() );
     }
 }
