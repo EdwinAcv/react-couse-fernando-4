@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { AuthRoutes } from "../auth/routes/AuthRoutes"
 import { JournalRoutes } from "../journal/routes/JournalRoutes"
 import { useDispatch, useSelector } from "react-redux"
@@ -33,12 +33,15 @@ export const AppRouter = () => {
 
   return (
     <Routes>
+      {
+        (status === 'authenticated') 
+        ? <Route path="/*" element= { <JournalRoutes /> }/>
+        : <Route path="/auth/*" element={ <AuthRoutes /> }/>
+      }
+      
+      <Route path="/*" element={ <Navigate to='/auth/login' /> }/>
 
-        {/* login y registro*/}
-        <Route path="/auth/*" element={ <AuthRoutes /> }/>
-
-        {/* journalApp */}
-        <Route path="/*" element= { <JournalRoutes /> }/>
+        
 
     </Routes>
   )
